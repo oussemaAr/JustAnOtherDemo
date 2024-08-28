@@ -1,4 +1,4 @@
-package template.app.screens.details
+package template.app.launches.screens.details
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -10,8 +10,8 @@ import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import template.app.components.LaunchCard
-import template.app.components.LaunchDTO
+import template.app.launches.components.LaunchCard
+import template.app.launches.components.LaunchDTO
 
 class DetailsScreen(
     private val launch: LaunchDTO

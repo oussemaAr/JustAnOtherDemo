@@ -1,4 +1,4 @@
-package template.app.components
+package template.app.launches.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Done
 import androidx.compose.material.icons.rounded.Info
@@ -17,7 +18,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -31,8 +34,9 @@ import template.app.theme.secondaryLight
 data class LaunchDTO(
     val imageUrl: String,
     val title: String,
-    val description: String,
+    var description: String,
     val status: Boolean,
+    val id : String
 )
 
 @Composable
@@ -57,6 +61,7 @@ fun LaunchCard(
             val painter = asyncPainterResource(item.imageUrl)
             KamelImage(
                 resource = painter,
+                contentScale = ContentScale.Crop,
                 contentDescription = "Launch Image",
                 onFailure = {
                     Napier.e("Image Failed")
@@ -65,8 +70,9 @@ fun LaunchCard(
                     CircularProgressIndicator()
                 },
                 modifier = Modifier
-                    .size(48.dp)
                     .padding(end = 6.dp)
+                    .size(48.dp)
+                    .clip(RoundedCornerShape(100))
             )
             Column(
                 modifier = Modifier.weight(1f)

@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -48,6 +49,8 @@ kotlin {
             implementation(libs.kamel)
             implementation(libs.bundles.ktor)
             implementation(libs.bundles.voyager)
+            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.koin.core)
         }
 
         iosMain.dependencies {
